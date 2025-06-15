@@ -6,7 +6,7 @@ BEGIN;
 
 -- Create a function to generate realistic recommendations based on industry
 CREATE
-OR REPLACE FUNCTION generate_recommendations(industry_name TEXT, company_name TEXT) RETURNS TEXT AS $$ BEGIN CASE
+OR REPLACE FUNCTION generate_recommendations(industry_name TEXT, company_name TEXT) RETURNS TEXT AS $ $ BEGIN CASE
     WHEN industry_name LIKE '%Water%' THEN RETURN 'Recommendations for ' || company_name || ': 1) Implement advanced water treatment technologies to reduce environmental impact. 2) Enhance community engagement programs for water conservation. 3) Develop renewable energy sources for water processing facilities. 4) Strengthen supply chain sustainability practices. 5) Improve transparency in water quality reporting to stakeholders.';
 
 WHEN industry_name LIKE '%Banking%' THEN RETURN 'Recommendations for ' || company_name || ': 1) Expand green financing portfolio and sustainable investment products. 2) Implement comprehensive ESG risk assessment framework. 3) Enhance digital banking services to reduce carbon footprint. 4) Strengthen financial inclusion initiatives for underserved communities. 5) Develop climate-related financial risk disclosure practices.';
@@ -32,11 +32,11 @@ END CASE
 
 END;
 
-$$ LANGUAGE plpgsql;
+$ $ LANGUAGE plpgsql;
 
 -- Create a function to generate realistic key findings
 CREATE
-OR REPLACE FUNCTION generate_key_findings(industry_name TEXT, company_name TEXT) RETURNS TEXT AS $$ BEGIN CASE
+OR REPLACE FUNCTION generate_key_findings(industry_name TEXT, company_name TEXT) RETURNS TEXT AS $ $ BEGIN CASE
     WHEN industry_name LIKE '%Water%' THEN RETURN 'Key Findings for ' || company_name || ': The company demonstrates strong environmental stewardship with effective water resource management practices. Notable achievements include 15-25% reduction in water loss, implementation of smart monitoring systems, and community water conservation programs. Areas for improvement include renewable energy adoption and enhanced biodiversity protection measures.';
 
 WHEN industry_name LIKE '%Banking%' THEN RETURN 'Key Findings for ' || company_name || ': Strong governance framework with robust risk management practices. The bank shows commitment to sustainable finance with growing green loan portfolio. ESG integration in investment decisions is progressing well. Opportunities exist to enhance climate risk disclosure and expand financial inclusion initiatives for rural communities.';
@@ -62,7 +62,7 @@ END CASE
 
 END;
 
-$$ LANGUAGE plpgsql;
+$ $ LANGUAGE plpgsql;
 
 -- Insert AI evaluations for all report submissions
 INSERT INTO

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ESGBackEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+62ac10958ee69dccf49c7d30bff3863084cf9e18")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63d0659359e93199cf6205583f365700f6f32c9d")]
 [assembly: System.Reflection.AssemblyProductAttribute("ESGBackEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ESGBackEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
