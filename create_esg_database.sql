@@ -180,9 +180,6 @@ CREATE TABLE evaluation_metrics (
     CONSTRAINT fk_evaluation_metrics_ai_evaluations FOREIGN KEY (id) REFERENCES ai_evaluations(id)
 );
 
-
-
-
 -- Create indexes for better performance
 CREATE INDEX idx_companies_industry_id ON companies(industry_id);
 
@@ -204,13 +201,13 @@ CREATE INDEX idx_ai_evaluations_evaluated_at ON ai_evaluations(evaluated_at);
 
 -- Create trigger function to update updated_at timestamp
 CREATE
-OR REPLACE FUNCTION update_updated_at_column() RETURNS TRIGGER AS $$ BEGIN NEW.updated_at = NOW();
+OR REPLACE FUNCTION update_updated_at_column() RETURNS TRIGGER AS $ $ BEGIN NEW.updated_at = NOW();
 
 RETURN NEW;
 
 END;
 
-$$ language 'plpgsql';
+$ $ language 'plpgsql';
 
 -- Create trigger for companies table
 CREATE TRIGGER update_companies_updated_at BEFORE
@@ -261,6 +258,92 @@ VALUES
         'Transportation',
         'TRNS'
     );
+
+-- Insert additional industries from ESG data
+INSERT INTO
+    industries (name, code)
+VALUES
+    ('Aerospace and defense', 'AERO'),
+    ('Automobiles and auto parts', 'AUTO'),
+    ('Banking services', 'BANKSERV'),
+    ('Beverages', 'BEVG'),
+    ('Biotechnology and medical research', 'BIOTECH'),
+    ('Chemicals', 'CHEM'),
+    ('Coal', 'COAL'),
+    ('Collective investments', 'COLINV'),
+    ('Communications and networking', 'COMM'),
+    (
+        'Computers, phones and household electronics',
+        'ELECT'
+    ),
+    ('Construction and engineering', 'CONST'),
+    ('Construction materials', 'CONSTMAT'),
+    ('Containers and packaging', 'PACK'),
+    (
+        'Diversified industrial goods wholesalers',
+        'DIVINDG'
+    ),
+    ('Diversified retail', 'DIVRET'),
+    ('Electric utilities and IPPs', 'ELECUTIL'),
+    ('Electronic equipment and parts', 'ELECEQUIP'),
+    ('Food and drug retailing', 'FOODRET'),
+    ('Food and tobacco', 'FOOD'),
+    ('Freight and logistics services', 'FREIGHT'),
+    ('Healthcare equipment and supplies', 'HLTHEQUIP'),
+    ('Healthcare providers and services', 'HLTHPROV'),
+    (
+        'Homebuilding and construction supplies',
+        'HOMEBLD'
+    ),
+    ('Hotels and entertainment services', 'HOTEL'),
+    ('Household goods', 'HOUSEGD'),
+    ('Industrial conglomerates', 'INDCONG'),
+    ('Insurance', 'INSUR'),
+    (
+        'Investment banking and investment services',
+        'INVBANK'
+    ),
+    ('Investment holding companies', 'INVHOLD'),
+    ('Leisure products', 'LEISURE'),
+    (
+        'Machinery, tools, heavy vehicles, trains and ships',
+        'MACH'
+    ),
+    ('Media and publishing', 'MEDIA'),
+    ('Metals and mining', 'METALS'),
+    ('Multiline utilities', 'MULTIUTIL'),
+    ('Natural gas utilities', 'GASUTIL'),
+    ('Office equipment', 'OFFICE'),
+    ('Oil and gas', 'OILGAS'),
+    (
+        'Oil and gas related equipment and services',
+        'OILGASEQ'
+    ),
+    ('Paper and forest products', 'PAPER'),
+    ('Passenger transportation services', 'PASSTRANS'),
+    (
+        'Personal and household products and services',
+        'PERSONAL'
+    ),
+    ('Pharmaceuticals', 'PHARMA'),
+    (
+        'Professional and commercial services',
+        'PROFSERV'
+    ),
+    ('Real estate operations', 'REALOP'),
+    ('Renewable energy', 'RENEWENG'),
+    ('Residential and commercial REITs', 'REIT'),
+    (
+        'Semiconductors and semiconductor equipment',
+        'SEMI'
+    ),
+    ('Software and IT services', 'SOFTWARE'),
+    ('Specialty retailers', 'SPECRET'),
+    ('Telecommunications services', 'TELECOM'),
+    ('Textiles and apparel', 'TEXTILE'),
+    ('Transport infrastructure', 'TRANSINFRA'),
+    ('Uranium', 'URANIUM'),
+    ('Water and related utilities', 'WATERUTIL');
 
 -- Grant permissions (adjust as needed for your environment)
 -- GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO esg_user;
